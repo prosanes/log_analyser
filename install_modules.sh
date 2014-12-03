@@ -40,7 +40,7 @@ main() {
 
 	pushd $PUPPET_PATH
 	echo `pwd`
-	puppet_modules="elasticsearch-logstash elasticsearch-elasticsearch"
+	puppet_modules="elasticsearch-logstash elasticsearch-elasticsearch puppetlabs-stdlib ispavailability-file_concat"
 	for module in $puppet_modules; do
 		puppet module install --force $module
 	done

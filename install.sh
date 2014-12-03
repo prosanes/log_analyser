@@ -58,7 +58,7 @@ exec_and_tab_output_and_color_blue(){
 }
 
 main(){
-	package=("puppet")
+	package=("puppet.noarch")
 	command_install_puppet="sudo yum -y install ${package[@]};"
 
 	sudo_warning $command_install_puppet
