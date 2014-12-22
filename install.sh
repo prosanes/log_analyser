@@ -58,13 +58,17 @@ exec_and_tab_output_and_color_blue(){
 }
 
 main(){
-	package=("puppet.noarch")
+	package=("puppet.noarch rubygems.noarch")
 	command_install_puppet="sudo yum -y install ${package[@]};"
 
 	sudo_warning $command_install_puppet
 	exec_and_tab_output_and_color_blue $command_install_puppet
 
 	echo "${package[@]} installed. To know it's location, execute: \$rpm -ql ${package[@]}"
+
+	gem install librarian-puppet
+	gem install puppet
+	echo "Intalled librarian-puppet"
 }
 
 main

@@ -1,3 +1,7 @@
+class { 'logstashforwarder': 
+	package_url => 'http://download.website.com/packages/logstashforwarder.rpm'
+}
+
 yumrepo { 'logstash' :
 	name => 'logstash-repository-for-1.4.x-packages',
 	baseurl => 'http://packages.elasticsearch.org/logstash/1.4/centos',
@@ -45,6 +49,14 @@ class { 'elasticsearch':
   status => 'running',
   restart_on_change => true,
   config => { 'cluster.name' => 'elasticsearch' }
+}
+
+file { 'logstash.conf':
+	source => '/etc/puppet/modules/elasticsearch/files/elasticsearch.yml',
+	path => '/etc/elasticsearch/elasticsearch.yml',
+	ensure => present,
+	#ensure => absent,
+	force => true,
 }
 
 elasticsearch::instance { 'es-01':
