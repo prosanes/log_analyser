@@ -1,6 +1,9 @@
-class { 'logstashforwarder': 
-	package_url => 'http://download.website.com/packages/logstashforwarder.rpm'
-}
+#class { 'logstashforwarder': 
+#	package_url => 'http://download.website.com/packages/logstashforwarder.rpm',
+#	ensure => 'present',
+#	status => 'enabled',
+#	servers => [ '0.0.0.0:9200' ]
+#}
 
 yumrepo { 'logstash' :
 	name => 'logstash-repository-for-1.4.x-packages',
