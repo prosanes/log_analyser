@@ -51,7 +51,7 @@ class { 'elasticsearch':
   config => { 'cluster.name' => 'elasticsearch' }
 }
 
-file { 'logstash.conf':
+file { 'elasticsearch.yml':
 	source => '/etc/puppet/modules/elasticsearch/files/elasticsearch.yml',
 	path => '/etc/elasticsearch/elasticsearch.yml',
 	ensure => present,
