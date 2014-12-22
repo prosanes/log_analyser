@@ -28,7 +28,7 @@ class { 'logstash':
 }
 
 file { 'logstash.conf':
-	source => '/etc/puppet/modules/logstash/files/logstash_basic.conf',
+	source => '/etc/puppet/modules/logstash/files/logstash_apache_example.conf',
 	path => '/etc/logstash/conf.d/logstash.conf',
 	ensure => present,
 	#ensure => absent,
