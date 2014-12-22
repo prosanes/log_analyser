@@ -34,22 +34,6 @@ parse_arguments() {
 	REMAINING_ARGS="$@"
 }
 
-#move_files_to_module_dir() {
-#	PUPPET_PATH=$1
-#	FILES_DIR="./files/"
-#
-#	pushd $FILES_DIR
-#	for file in `ls`; do
-#		module=`cat $file | head -n1 | sed 's/##module: //g'`;
-#		echo $module
-#		mkdir -p $PUPPET_PATH/$module/files
-#		tail -n +2 $file > $PUPPET_PATH/modules/$module/files/$file
-#		echo "====="
-#		cat $PUPPET_PATH/$module/files/$file
-#	done
-#	popd
-#}
-
 main() {
     parse_arguments "$@" # Pass 1: this first time it is used to retrieve simple values
     : ${PUPPET_PATH:='/etc/puppet'}
