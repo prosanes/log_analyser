@@ -52,15 +52,12 @@ class { 'elasticsearch':
   status => 'running',
   restart_on_change => true,
   config => { 'cluster.name' => 'elasticsearch' }
-}
+} ->
 
-file { 'elasticsearch.yml':
-	source => '/etc/puppet/modules/elasticsearch/files/elasticsearch.yml',
-	path => '/etc/elasticsearch/elasticsearch.yml',
-	ensure => present,
-	#ensure => absent,
-	force => true,
-}
+elasticsearch::plugin { 'lmenezes/elasticsearch-kopf':
+  module_dir => 'kopf',
+  instances  => ['es-01']
+} ->
 
 elasticsearch::instance { 'es-01':
 	ensure => 'present',
@@ -68,7 +65,11 @@ elasticsearch::instance { 'es-01':
 	config => { 'node.name' => 'es-01' }
 }
 
-elasticsearch::plugin { 'lmenezes/elasticsearch-kopf':
-  module_dir => 'kopf',
-  instances  => 'es-01'
+
+file { 'elasticsearch.yml':
+	source => '/etc/puppet/modules/elasticsearch/files/elasticsearch.yml',
+	path => '/etc/elasticsearch/elasticsearch.yml',
+	ensure => present,
+	#ensure => absent,
+	force => true,
 }
