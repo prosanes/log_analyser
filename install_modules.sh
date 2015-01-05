@@ -49,7 +49,7 @@ main() {
 		librarian-puppet install --verbose
 	popd
 	#move_files_to_module_dir $PUPPET_PATH
-	rsync -r files/ $PUPPET_PATH/modules/
+	rsync -r puppet_files/ $PUPPET_PATH/modules/
 }
 
 main $@
